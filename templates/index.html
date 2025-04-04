@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuesta & Gana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Apuesta & Gana</h1>
+        <form action="/jugar" method="POST">
+            <div class="form-group">
+                <label for="loteria">Seleccione Lotería:</label>
+                <select id="loteria" name="loteria" class="input-field">
+                    <option value="boyaca">Boyacá</option>
+                    <option value="valle">Valle</option>
+                    <option value="huila">Huila</option>
+                    <option value="tolima">Tolima</option>
+                    <option value="bogota">Bogotá</option>
+                    <option value="quindio">Quindío</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="modalidad">Modalidad de Juego:</label>
+                <select id="modalidad" name="modalidad" class="input-field">
+                    <option value="1">1 Cifra</option>
+                    <option value="2">2 Cifras</option>
+                    <option value="3">3 Cifras</option>
+                    <option value="4">4 Cifras</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" name="numero" class="input-field" maxlength="4">
+                <button type="button" onclick="generarNumeroAleatorio()" class="btn-aleatorio">Generar Aleatorio</button>
+            </div>
+
+            <div class="form-group">
+                <label for="valor">Valor de la Apuesta:</label>
+                <input type="number" id="valor" name="valor" class="input-field" min="1000" max="10000" step="1000" value="1000">
+                <p style="margin-top: 0.5rem; color: #4CAF50;">Valor a ganar: <span id="valor-ganar">$500.000</span></p>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn-jugar">¡Jugar!</button>
+                <button type="button" id="btn-imprimir" class="btn-jugar" style="background-color: #4CAF50;">Imprimir Apuesta</button>
+                <button type="button" id="btn-historico" class="btn-jugar" style="background-color: #9C27B0;">Ver Histórico</button>
+            </div>
+        </form>
+
+        <div id="resultados" class="resultados">
+            <h2>Resultados del Sorteo</h2>
+            <div class="numeros-ganadores">
+                <div class="sorteo">
+                    <p>Número Ganador: <span id="ganador">----</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
